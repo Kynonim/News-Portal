@@ -1,10 +1,10 @@
 <?php
 include "config/koneksi.php";
 
-$nama = "Administrator";
-$email = "admin@gmail.com";
-$password = password_hash("12345", PASSWORD_DEFAULT);
-$role = "ketua";
+$nama = "Riky Ripaldo";
+$email = "riky@mail.com";
+$password = password_hash("root", PASSWORD_DEFAULT);
+$role = "admin";
 
 $query = mysqli_query(
   $koneksi,

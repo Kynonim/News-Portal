@@ -4,3 +4,5 @@ Folder Fungsi:
 - config -> Konfigurasi database
 - includes -> File template
 - uploads -> Upload thumbnail berita
+
+my page: https://rikyripaldo.my.id
