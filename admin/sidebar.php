@@ -7,13 +7,13 @@
         <a href="index.php" class="nav-link text-white">Dashboard</a>
       </li>
       <li class="nav-item mb-2">
-        <a href="./kategori/index.php" class="nav-link text-white">Kategori</a>
+        <a href="kategori/index.php" class="nav-link text-white">Kategori</a>
       </li>
       <li class="nav-item mb-2">
-        <a href="./artikel/index.php" class="nav-link text-white">Artikel</a>
+        <a href="artikel/index.php" class="nav-link text-white">Artikel</a>
       </li>
       <li class="nav-item mb-2">
-        <a href="./logout.php" class="nav-link text-danger">Logout</a>
+        <a href="logout.php" class="nav-link text-danger">Logout</a>
       </li>
     </ul>
   </div>
