@@ -11,6 +11,22 @@ if (isset($_GET['keyword'])) {
   $keyword = $_GET['keyword'];
 }
 
+// pagination
+$limit = 6;
+$page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;
+if ($page < 1) {
+  $page = 1;
+}
+$offset = ($page - 1) * $limit;
+
+// htung total data
+$total_data = mysqli_num_rows(mysqli_query($koneksi, "
+  select id from artikel
+  where kategori_id = '$id_kategori'
+  and judul like '%$keyword%'
+"));
+$total_page = ceil($total_data / $limit);
+
 $artikel = mysqli_query($koneksi, "
   select
     artikel.*,
@@ -22,6 +38,7 @@ $artikel = mysqli_query($koneksi, "
   where artikel.kategori_id='$id_kategori'
   and artikel.judul like '%$keyword%'
   order by artikel.id desc
+  limit $offset, $limit
 ");
 ?>
 
@@ -53,6 +70,28 @@ $artikel = mysqli_query($koneksi, "
       </div>
     </div>
     <?php endwhile; ?>
+    <!-- nav page -->
+    <nav>
+      <ul class="pagination justify-content-center">
+        <?php if($page > 1){ ?>
+        <li class="page-item">
+          <a class="page-link" href="?id=<?= $id_kategori; ?>&keyword=<?= $keyword; ?>&page=<?= $page-1; ?>">Previous</a>
+        </li>
+        <?php } ?>
+        <?php for($i=1;$i<=$total_page;$i++) : ?>
+        <li class="page-item <?= ($i == $page) ? 'active': ''; ?>">
+          <a class="page-link" href="?id=<?= $id_kategori; ?>&keyword=<?= $keyword; ?>&page=<?= $i; ?>">
+            <?= $i; ?>
+          </a>
+        </li>
+        <?php endfor; ?>
+        <?php if($page < $total_page) : ?>
+        <li class="page-item">
+          <a class="page-link" href="?id=<?= $id_kategori; ?>&keyword=<?= $keyword; ?>&page=<?= $page+1; ?>">Next</a>
+        </li>
+        <?php endif; ?>
+      </ul>
+    </nav>
   </div>
 </div>
 

@@ -65,7 +65,7 @@ include "../sidebar.php";
         <!-- isi -->
         <div class="mb-3">
           <label>Isi Berita</label>
-          <textarea name="isi_berita" rows="10" class="form-control" required></textarea>
+          <textarea id="editor" name="isi_berita" rows="10" class="form-control"></textarea>
         </div>
         <!-- thumb -->
         <div class="mb-3">

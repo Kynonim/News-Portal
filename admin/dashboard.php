@@ -3,26 +3,60 @@ session_start();
 if (!isset($_SESSION["role"])) {
   header("Location: ../auth/login.php");
 }
-?>
+require_once "../config/koneksi.php";
 
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body>
-  <div class="container mt-5">
-    <div class="card shadow">
+$artikel = mysqli_query($koneksi, "select count(*) as total_artikel from artikel");
+$total_artikel = mysqli_fetch_assoc($artikel);
+$kategori = mysqli_query($koneksi, "select count(*) as total_kategori from kategori");
+$total_kategori = mysqli_fetch_assoc($kategori);
+
+// total koemntar & total user
+$total_komentar = mysqli_num_rows(mysqli_query($koneksi, "select * from komentar"));
+$total_user = mysqli_num_rows(mysqli_query($koneksi, "select * from users"));
+
+include "header.php";
+include "sidebar.php";
+?>
+<h2>Dashboard Ketua Portal Berita</h2>
+<hr>
+<div class="row">
+  <!-- total artikel -->
+  <div class="col-md-4">
+    <div class="card shadow border-0">
       <div class="card-body">
-        <h2>Selamat datang, <?php echo $_SESSION["nama"]; ?></h2>
-        <hr>
-        <h5>Role: <?php echo $_SESSION["role"]; ?></h5>
-        <a href="logout.php" class="btn btn-danger mt-3">Logout</a>
+        <h5>Total Artikel</h5>
+        <h2><?= $total_artikel["total_artikel"]; ?></h2>
       </div>
     </div>
   </div>
-</body>
-</html>
+  <!-- total kategori -->
+  <div class="col-md-4">
+    <div class="card shadow border-0">
+      <div class="card-body">
+        <h5>Total Kategori</h5>
+        <h2><?= $total_kategori["total_kategori"]; ?></h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- total komen & user -->
+  <?php if ($_SESSION["role"] == "ketua") : ?>
+  <div class="col-md-4">
+    <div class="card shadow border-0">
+      <div class="card-body">
+        <h5>Total Komentar</h5>
+        <h2><?= $total_komentar; ?></h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow border-0">
+      <div class="card-body">
+        <h5>Total User</h5>
+        <h2><?= $total_user; ?></h2>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
+</div>
+<?php include "footer.php"; ?>

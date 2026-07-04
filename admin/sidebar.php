@@ -6,6 +6,11 @@
       <li class="nav-item mb-2">
         <a href="/newsportal/admin/index.php" class="nav-link text-white">Dashboard</a>
       </li>
+      <?php if ($_SESSION["role"] == "ketua") : ?>
+      <li class="nav-item mb-2">
+        <a href="/newsportal/admin/user.php" class="nav-link text-white">Kelola User</a>
+      </li>
+      <?php endif; ?>
       <li class="nav-item mb-2">
         <a href="/newsportal/admin/kategori/index.php" class="nav-link text-white">Kategori</a>
       </li>

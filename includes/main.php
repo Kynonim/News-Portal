@@ -110,7 +110,10 @@ $artikel_kategori = mysqli_query($koneksi, "
 
 <div class="container mt-5">
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h2><?= $kat["nama_kategori"]; ?></h2>
+    <h2>
+      <?= $kat["nama_kategori"]; ?>
+      <a href="kategori.php?id=<?= $kat["id"]; ?>" class="btn btn-outline-primary">Lihat semua</a>
+    </h2>
   </div>
   <div class="row">
     <?php while($a = mysqli_fetch_assoc($artikel_kategori)) : ?>
