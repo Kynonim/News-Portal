@@ -15,9 +15,9 @@ if (isset($_POST["login"])) {
       $_SESSION["role"] = $data["role"];
 
       if ($data["role"] == "ketua") {
-        header("Location: ../admin/dashboard.php");
+        header("Location: ../admin/dashboard.php"); //ketua
       } else {
-        header("Location: ../admin/dashboard.php");
+        header("Location: ../admin/index.php"); //admin
       }
     } else {
       $error = "Password salah";
