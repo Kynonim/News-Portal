@@ -16,7 +16,7 @@
           <a class="nav-link" href="#">Tentang</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-warning ms-2 px-3" href="#">Login</a>
+          <a class="nav-link btn btn-warning text-dark ms-2 px-3" href="#">Login</a>
         </li>
       </ul>
     </div>
