@@ -29,7 +29,7 @@ $data = mysqli_query($koneksi, "select * from kategori");
           <a class="nav-link" href="tentang.php">Tentang</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn btn-warning text-dark ms-2 px-3" href="./auth/login.php">Login</a>
+          <a class="nav-link btn btn-warning text-light ms-2 px-3" href="./auth/login.php">Login</a>
         </li>
       </ul>
     </div>
