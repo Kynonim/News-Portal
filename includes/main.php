@@ -1,10 +1,17 @@
 <?php
-date_default_timezone_set('Asia/Tokyo'); //japan
+/**
+ * timezone saya ganti ke tokyo
+ * karena saya di luar negeri pak dan waktu di laptop
+ * mengikuti waktu di device saya,
+ * saya jujur tidak tau kenapa waktunya bentrok dengan waktu php servernya
+ * kalau tidak saya ganti ke tokyo, waktunya jadi minus dan error
+*/
+date_default_timezone_set("Asia/Tokyo"); //japan
 
 function waktu_lalu($datetime) {
   $selisih = time() - strtotime($datetime);
 
-  if ($selisih < 0) $selisih = 0;
+  if ($selisih < 0) $selisih = 0; // waktu - set ke 0
 
   if ($selisih < 60) {
     return $selisih . " detik yang lalu";

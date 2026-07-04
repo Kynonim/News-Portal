@@ -14,8 +14,9 @@ $query = mysqli_query($koneksi, "
   left join users on artikel.user_id = users.id
   where artikel.id='$id'
 ");
-
 $data = mysqli_fetch_assoc($query);
+
+
 ?>
 
 <div class="container mt-5">
